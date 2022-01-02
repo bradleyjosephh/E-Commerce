@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Tag, Product, ProductTag } = require('../../models')
+const { Tag, Product, ProductTag } = require('../models')
 
 // The `/api/tags` endpoint
 
@@ -23,7 +23,7 @@ router.put('/tags/:id', async (req, res) => {
   res.json(tagData)
 })
 
-router.delete('/tags/:id', (req, res) => {
+router.delete('/tags/:id', async (req, res) => {
   await Tag.destroy({ where: { id: req.params.id } })
   res.sendStatus(200)
 })
