@@ -3,26 +3,29 @@ const { Tag, Product, ProductTag } = require('../../models')
 
 // The `/api/tags` endpoint
 
-router.get('/tags', (req, res) => {
-  // find all tags
-  // be sure to include its associated Product data
+router.get('/tags', async (req, res) => {
+  const tagData = await Tag.findAll({ include: [{model: Product, through: ProductTag}] })
+  res.json(tagData)
 })
 
-router.get('/tags/:id', (req, res) => {
-  // find a single tag by its `id`
-  // be sure to include its associated Product data
+router.get('/tags/:id', async (req, res) => {
+  const tagData = await Tag.findOne({ where: { id: req.params.id }, include: [{model: Product, through: ProductTag}] })
+  res.json(tagData)
 })
 
-router.post('/tags', (req, res) => {
-  // create a new tag
+router.post('/tags', async (req, res) => {
+  const tagData = await Tag.create(req.body)
+  res.json(tagData)
 })
 
-router.put('/tags/:id', (req, res) => {
-  // update a tag's name by its `id` value
+router.put('/tags/:id', async (req, res) => {
+  const tagData = await Tag.update(req.body, {where: { id: req.params.id}})
+  res.json(tagData)
 })
 
 router.delete('/tags/:id', (req, res) => {
-  // delete on tag by its `id` value
+  await Tag.destroy({ where: { id: req.params.id } })
+  res.sendStatus(200)
 })
 
 module.exports = router
