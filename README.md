@@ -1,5 +1,8 @@
  # E-Commerce
   ----------------------------------
+
+  Video links: https://www.youtube.com/watch?v=9QdiYapNJ9A
+  https://www.youtube.com/watch?v=nzYQQvuLbPM
   
   # Table Of Contents
   -------------------
@@ -13,7 +16,7 @@
   * [Email-Address](#email-address)
   
   ## Description
-  A note taking app using db.json to store notes created using express. This app is deployed through heroku.
+    Express server to demonstrate mySQL database usage via api web calls.
   --
   ## Installation
    git clone "https://github.com/E-commerce"
